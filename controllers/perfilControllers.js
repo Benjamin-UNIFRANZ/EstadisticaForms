@@ -25,6 +25,7 @@ module.exports.editarPerfil = async (req, res) => {
                     req.flash('mensajes', [{ msg: 'La imagen es muy pesada, menos de 5MB' }]);
                     return res.redirect('/perfil');
                 }
+                
                 req.flash('mensajes', [{ msg: 'Fallo la subida de imagen' }]);
                 return res.redirect('/perfil');
             }

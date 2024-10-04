@@ -8,26 +8,15 @@ const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
 const helmet = require('helmet'); // Asegúrate de instalar helmet
-const cors = require('cors');
+
 
 
 require('dotenv').config();
-
-const clientBD = require('./database/db');
+require('./database/db');
 
 
 const path = require('path');
 const app = express();
-
-app.use (cors());
-const corsOptions = {
-    // origin: 'http://localhost:3000',
-    // optionsSuccessStatus: 200
-    credentilas: true,
-    origin: process.env.PATHHEROKU || '*',
-    methods : ['GET', 'POST'],
-
-};
 
 // Middleware para analizar cookies
 app.use(cookieParser()); // Línea 17: Añadido middleware cookie-parser
@@ -36,18 +25,17 @@ app.use(cookieParser()); // Línea 17: Añadido middleware cookie-parser
 app.use(express.urlencoded({ extended: true })); // Línea 20: Añadido middleware express.urlencoded
 
 app.use(session({
-    secret: process.env.SECRETSESSION,
+    secret: 'estadistica',
     resave: false,
     saveUninitialized: false,
-    name: 'session-user',
+    name: 'secret-name',
     cookie: {
-        secure: process.env.MODO === 'production' ,
-        maxAge: 4 * 60 * 60 * 1000 // 4 horas en milisegundos
+        maxAge: 24 * 60 * 60 * 1000 // 1 día en milisegundos
     },
     store: MongoStore.create({
-        clientPromise: clientBD,
-        dbName: process.env.DBNAME,
-    }),
+        mongoUrl: process.env.URI,
+        ttl: 24 * 60 * 60 // 1 día en segundos
+    })
 }));
 
 
