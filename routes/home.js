@@ -1,15 +1,22 @@
 const express = require('express');
+const { leerUrls, agergarURL, eliminarURL, editarUrlForm, editarUrl, redireccionamiento } = require('../controllers/homeControlles');
+const urlVa = require('../middlewares/urlValidar');
+const verficarUser = require('../middlewares/verificarUser');
+const csrf = require('csurf');
+const { formPerfil, editarPerfil } = require('../controllers/perfilControllers'); // Importar correctamente
+const csrfProtection = csrf({ cookie: true });
+
 const router = express.Router();
 
-router.get('/', (req, res) => { 
-    const url =[
-        {origin: 'https://www.goo2gle.com', shortURL:'fjadsk1'},
-        {origin: 'https://www.goog1le.com', shortURL:'fjadsk2'},
-        {origin: 'https://www.goo3gle.com', shortURL:'fjadsk3'},
-        {origin: 'https://www.goo3gle.com', shortURL:'fjadsk4'},
-    ]
+router.get('/', verficarUser, leerUrls);
+router.post('/', verficarUser, csrfProtection, urlVa, agergarURL);
+router.get('/eliminar/:id', verficarUser, eliminarURL);
+router.get('/editar/:id', verficarUser, editarUrlForm);
+router.post('/editar/:id', verficarUser, csrfProtection, urlVa, editarUrl);
 
-    res.render('home',{url: url});
-})
+router.get('/perfil', verficarUser, formPerfil); // Usar el controlador correctamente
+router.post('/perfil', verficarUser, csrfProtection, editarPerfil); // Asegurar protección CSRF y verificación de usuario
+
+router.get('/:shortURL', redireccionamiento);
 
 module.exports = router;
