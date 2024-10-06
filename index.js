@@ -28,6 +28,7 @@ const corsOptions = {
     methods : ['GET', 'POST'],
 
 };
+app.use(cors(corsOptions));
 
 // Middleware para analizar cookies
 app.use(cookieParser()); // Línea 17: Añadido middleware cookie-parser
