@@ -2,7 +2,7 @@ const User = require('../models/User');
 const { v4: uuidv4 } = require('uuid');
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
-const nodemailer = require('nodemailer');   
+const nodemailer = require('nodemailer'); 
 require('dotenv').config();
 
 const loginForm = (req, res) => {
@@ -57,7 +57,7 @@ const registerUser = async(req, res) => {2
             from: '"Fred Foo 👻" <foo@example.com>',
             to: user.email,
             subject: "verifique cuenta de correo",
-            html: `<a href="${process.env.SECRETSESSION || "http://localhost:3000"}/auth/confirmarCuenta/${user.tokenConfirm}">verificar cuenta aquí</a>`,
+            html: `<a href="${process.env.VERCEL|| "http://localhost:3000"}auth/confirmarCuenta/${user.tokenConfirm}">verificar cuenta aquí</a>`,
         });
         req.flash('mensajes',[{msg:'Usuario registrado, verifica tu correo'}]);
 
