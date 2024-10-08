@@ -10,7 +10,6 @@ const MongoStore = require('connect-mongo');
 const helmet = require('helmet'); // Asegúrate de instalar helmet
 const cors = require('cors');
 
-
 require('dotenv').config();
 
 const clientBD = require('./database/db');

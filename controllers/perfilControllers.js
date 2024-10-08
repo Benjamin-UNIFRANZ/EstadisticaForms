@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const User = require('../models/User');
 const { put } = require('@vercel/blob');
+const axios = require('axios'); // Asegúrate de tener axios instalado
 require('dotenv').config();
 
 module.exports.formPerfil = async(req, res) => {
@@ -76,7 +77,11 @@ module.exports.editarPerfil = async (req, res) => {
 // Nueva función para listar blobs en el contenedor
 module.exports.listarBlobs = async (req, res) => {
     try {
-        const response = await axiosInstance.get('/perfiles');
+        const response = await axios.get('https://api.vercel.com/v2/blobs/perfiles', {
+            headers: {
+                Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`
+            }
+        });
         const blobs = response.data;
         res.json(blobs);
     } catch (error) {
