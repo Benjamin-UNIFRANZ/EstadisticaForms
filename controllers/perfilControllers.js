@@ -1,44 +1,10 @@
-require('dotenv').config();
 const formidable = require('formidable');
 const Jimp = require('jimp'); 
 const path = require('path');
 const fs = require('fs');
-const { google } = require('googleapis');
 const User = require('../models/User');
-
-// Configurar la autenticación de Google Drive
-const oauth2Client = new google.auth.OAuth2(
-  process.env.YOUR_CLIENT_ID,
-  process.env.YOUR_CLIENT_SECRET,
-  process.env.REDIRECT_URI
-);
-
-// Establecer las credenciales
-oauth2Client.setCredentials({
-  refresh_token: process.env.YOUR_REFRESH_TOKEN
-});
-
-const drive = google.drive({ version: 'v3', auth: oauth2Client });
-
-async function uploadFileToDrive(filePath, fileName) {
-  const fileMetadata = {
-    name: fileName,
-    parents: [process.env.GOOGLE_DRIVE_FOLDER_ID] // ID de la carpeta en Google Drive
-  };
-
-  const media = {
-    mimeType: 'image/jpeg',
-    body: fs.createReadStream(filePath)
-  };
-
-  const response = await drive.files.create({
-    resource: fileMetadata,
-    media: media,
-    fields: 'id, webContentLink'
-  });
-
-  return response.data;
-}
+const { put } = require('@vercel/blob');
+require('dotenv').config();
 
 module.exports.formPerfil = async(req, res) => {
     try {
@@ -83,21 +49,21 @@ module.exports.editarPerfil = async (req, res) => {
             }
 
             const extension = path.extname(file.originalFilename);
-            const tempFilePath = path.join(__dirname, `../temp/${req.user.id}${extension}`);
+            const blobName = `${req.user.id}${extension}`;
+            const containerName = 'perfiles';
 
-            fs.copyFileSync(file.filepath, tempFilePath);
+            // Procesar la imagen con Jimp
+            const image = await Jimp.read(file.filepath);
+            await image.resize(200, 200).quality(60).writeAsync(file.filepath);
 
-            const image = await Jimp.read(tempFilePath); 
-            await image.resize(200, 200).quality(60).writeAsync(tempFilePath);
-
-            const driveResponse = await uploadFileToDrive(tempFilePath, `${req.user.id}${extension}`);
+            // Subir la imagen procesada al blob
+            const processedData = fs.readFileSync(file.filepath);
+            const { url: processedUrl } = await put(`perfiles/${blobName}`, processedData, { access: 'public' });
 
             const user = await User.findById(req.user.id);
-            user.imagen = driveResponse.webContentLink;
+            user.imagen = processedUrl;
             await user.save();
-
-            fs.unlinkSync(tempFilePath); // Eliminar el archivo temporal
-
+            console.log(user.imagen)
             req.flash('mensajes', [{ msg: 'Ya se subio la imagen' }]);
             return res.redirect('/perfil');
         } catch (error) {
@@ -105,4 +71,15 @@ module.exports.editarPerfil = async (req, res) => {
             return res.redirect('/perfil');
         }
     });
+};
+
+// Nueva función para listar blobs en el contenedor
+module.exports.listarBlobs = async (req, res) => {
+    try {
+        const response = await axiosInstance.get('/perfiles');
+        const blobs = response.data;
+        res.json(blobs);
+    } catch (error) {
+        res.status(500).send(`Error listing blobs: ${error.message}`);
+    }
 };

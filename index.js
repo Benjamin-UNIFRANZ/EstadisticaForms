@@ -84,7 +84,7 @@ app.use(helmet({
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'", "https://cdn.jsdelivr.net", "'unsafe-inline'"],
             styleSrc: ["'self'", "https://cdn.jsdelivr.net", "'unsafe-inline'"],
-            imgSrc: ["'self'", "data:", "https://cdn.jsdelivr.net", "http://localhost:3000"],
+            imgSrc: ["'self'", "data:", "https://cdn.jsdelivr.net", "http://localhost:3000","https://qzzzc0qgcnodzpo2.public.blob.vercel-storage.com"],
             connectSrc: ["'self'"],
             fontSrc: ["'self'", "https://cdn.jsdelivr.net"],
             objectSrc: ["'none'"],

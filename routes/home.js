@@ -3,7 +3,7 @@ const { leerUrls, agergarURL, eliminarURL, editarUrlForm, editarUrl, redireccion
 const urlVa = require('../middlewares/urlValidar');
 const verficarUser = require('../middlewares/verificarUser');
 const csrf = require('csurf');
-const { formPerfil, editarPerfil } = require('../controllers/perfilControllers'); // Importar correctamente
+const { formPerfil, editarPerfil, listarBlobs } = require('../controllers/perfilControllers'); // Importar correctamente
 const csrfProtection = csrf({ cookie: true });
 
 const router = express.Router();
@@ -16,6 +16,8 @@ router.post('/editar/:id', verficarUser, csrfProtection, urlVa, editarUrl);
 
 router.get('/perfil', verficarUser, formPerfil); // Usar el controlador correctamente
 router.post('/perfil', verficarUser, csrfProtection, editarPerfil); // Asegurar protección CSRF y verificación de usuario
+
+router.get('/listar-blobs', verficarUser, listarBlobs); // Nueva ruta para listar blobs
 
 router.get('/:shortURL', redireccionamiento);
 

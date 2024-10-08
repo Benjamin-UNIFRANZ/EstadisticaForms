@@ -20,7 +20,7 @@ const agergarURL = async(req, res) => {
     const { origin } = req.body;
     try{
         // 3. Usar uuid para generar un identificador único
-        const url = new Url({ origin:origin, shortURL: uuidv4(8), user:req.user.id });
+        const url = new Url({ origin:origin, shortURL: uuidv4(), user:req.user.id });
         // console.log(url)
         // res.send('Recibido')
         req.flash('mensajes',[{msg:'URL agregada'}]);

@@ -1,12 +1,11 @@
 <h1 class="text-center display-4">{{user.userName}}</h1>
-<p class=" text-cente lead">Edita tu perfil</p>
-<div class="my-2  text-center">
-{{#if imagen}}
-    <img src="/img/perfiles/{{imagen}}" alt="" class="rounded-circle">
+<p class="text-center lead">Edita tu perfil</p>
+<div class="my-2 text-center">
+    {{#if imagen}}
+        <img src="{{imagen}}" alt="Imagen de perfil" class="rounded-circle">
     {{else}}
-        <img src="/img/perfiles/img1.jpg" alt="" class="rounded-circle">
-
-{{/if}}
+        <img src="/img/perfiles/img1.jpg" alt="Imagen predeterminada" class="rounded-circle">
+    {{/if}}
 </div>
 
 <form
@@ -16,5 +15,7 @@
 >
     <input type="hidden" name="_csrf" value="{{csrfToken}}" />
     <input class="form-control mb-2" type="file" id="formFile" name="myFile" />
-    <button class="btn btn-dark">Cambir imagen de perfil</button>
+    <button class="btn btn-dark">Cambiar imagen de perfil</button>
 </form>
+
+
