@@ -1,0 +1,16 @@
+
+
+
+El mensaje de advertencia indica que el módulo `punycode` incluido con Node.js está en desuso. Deberías usar el módulo `punycode.js` proporcionado por la comunidad en su lugar. Para resolver esto, necesitas actualizar tu código para usar el módulo `punycode.js` desde npm.
+
+1. Instala el módulo `punycode.js`:
+    ```sh
+    npm install punycode
+    ```
+
+2. Actualiza tu código para usar el módulo `punycode.js`:
+    ```javascript
+    const punycode = require('punycode/');
+    ```
+
+Esto asegurará que estés usando la última versión del módulo `punycode` desde npm, que no está en desuso.
