@@ -1,17 +1,195 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">DESTROSOS</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="/">Home</a>
-        <a class="nav-link text-white" href="/perfil">Perfil</a>
-        <a class="nav-link text-white" href="/auth/login">LogIn</a>
-        <a class="nav-link text-white" href="/auth/logout">LogOut</a>
-        <a class="nav-link text-white" href="/auth/register">Register</a>
-      </div>
+
+  <div class="text-dark" id="wrapper" data-bs-theme="light"> 
+    
+    <div
+      class=" offcanvas offcanvas-start text-white bg-dark-subtle bg-gradien bg-gradient-dark offcanvas-width-custom "
+      id="offcanvasDemo1"
+      aria-labelledby="offcanvasDemo1Label"
+      tabindex="-1"
+      data-bs-theme="dark"
+    >
+      <nav class="navbar text-dark bg-dark-subtle bg-gradient align-items-start sidebar sidebar-dark accordion p-0 navbar-dark" data-bs-theme="dark">
+        <!-- Contenedor principal de la barra de navegación lateral -->
+        <div class="container-fluid d-flex flex-column p-0">
+
+          <div class="offcanvas-header dos-capas-menos capa-Altura-571" id="iconosPrincipal">    
+            <!-- Barra lateral -->
+            <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+              <!-- Enlace que actúa como marca de la barra lateral -->
+              <div class="sidebar-brand-icon">
+                <!-- Contenedor del icono SVG sin rotación -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-device-desktop-analytics fs-1 text-dark bg-info border rounded-circle border-1 border-info-subtle">
+                  <!-- Icono SVG del logo -->
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M3 4m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z"></path>
+                  <path d="M7 20h10"></path>
+                  <path d="M9 16v4"></path>
+                  <path d="M15 16v4"></path>
+                  <path d="M9 12v-4"></path>
+                  <path d="M12 12v-1"></path>
+                  <path d="M15 12v-2"></path>
+                  <path d="M12 12v-1"></path>
+                </svg>
+              </div>
+              <div class="sidebar-brand-text mx-3">
+                <!-- Contenedor del texto de la marca -->
+                <span class="text-black bg-info border rounded-pill border-3 border-info-subtle d-flex d-xl-flex align-content-start justify-content-xl-start" style="margin: 6px;margin-bottom: 0px;padding: 14px;padding-right: 0px;padding-top: 3px;padding-bottom: 3px;padding-left: 0px;margin-left: -8px;width: 150px;height: 36px;max-width: 147px;">
+                  &nbsp;Estadisticas
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="offcanvas-body control-altura izquierda" >
+
+          <!-- Separador horizontal -->
+          <hr class="sidebar-divider my-0">
+          <!-- Lista de enlaces de navegación -->
+          <ul class="navbar-nav text-light" id="accordionSidebar">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">
+                <i class="far fa-edit fs-5 text-info-emphasis d-inline-flex"></i>
+                <span>Crear Formulario</span>
+              </a>
+            </li>
+            <li class="nav-item"></li>
+            <li class="nav-item">
+              <a class="nav-link" href="/table.html">
+                <i class="fas fa-network-wired fs-5 text-info-emphasis"></i>
+                <span>Tus Formularios</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register.html">
+                <i class="fas fa-chart-bar fs-5 text-info-emphasis text-bg-dark"></i>  
+                <span>Resultados de Formulario</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/perfil">
+                <i class="fas fa-user fs-5 text-info-emphasis"></i>
+                <span>Perfil</span>
+              </a>
+              <a class="nav-link" href="/auth/login">
+                <i class="far fa-user-circle fs-5 text-info-emphasis text-bg-dark"></i>
+                <span>Login</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/auth/register">
+                <i class="fas fa-user-circle fs-5 text-info-emphasis text-bg-dark"></i>
+                <span>Crear Usuario</span>
+              </a>
+              <a class="nav-link" href="/auth/logout">
+                <i class="far fa-user-circle fs-5 text-info-emphasis text-bg-dark"></i>
+                <span>Cerrar Sesión</span>
+              </a>
+            </li>
+          </ul>
+        
+          <!-- Botón para colapsar/expandir la barra lateral -->
+          <div class="text-center d-none d-md-inline float-end botonLateral">
+            <button 
+              class="btn btn-primary rounded-circle border-0 " 
+              id="sidebarToggle" 
+              type="button"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            >
+            </button>
+          </div>
+          
+        </div>
+      </nav>
     </div>
   </div>
-</nav>
+
+
+  <div class="d-flex flex-column" id="content-wrapper" >
+  
+  <div id="content">
+
+    <nav class="navbar navbar-expand bg-info-subtle shadow d-xl-flex justify-content-center align-self-center mb-4 topbar " data-bs-theme="dark">
+              
+      <!-- Contenedor principal de la barra de navegación -->
+      <div class=" text-white derecha contenerdoDeDespliegue ">
+        <!-- Ícono que abre el offcanvas -->
+        <i
+          class="bi bi-list fs-1 crystal-icon"  
+          type="button"
+          aria-controls="offcanvasDemo1"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasDemo1"
+        ></i>
+      </div>
+
+       {{#if user}}
+      <div class="container-fluid " >            
+        <!-- Formulario de búsqueda -->
+        <form class="d-flex d-sm-inline-block align-items-center me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search" method="post" enctype="application/x-www-form-urlencoded">
+          <div class="input-group text-start text-bg-dark">
+            <input class="bg-light-subtle border-dark form-control border-0 small custom-input" type="text" placeholder="Url del form compartido">
+            <button class="btn btn-primary link-dark link-opacity-50 text-bg-info border rounded py-0 custom-button" type="button">
+              <i class="fas fa-file-download fs-4 text-dark text-opacity-75"></i>
+            </button>
+          </div>
+        </form>
+                <!-- Elementos de la barra de navegación -->
+        <ul class="navbar-nav flex-nowrap ms-auto">
+          <!-- Perfil de usuario -->
+          <li class="nav-item dropdown no-arrow">
+            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+              <span class="fs-6 fw-normal crystal-icon d-none d-lg-inline me-2  small"> {{user.userName}} </span>
+            {{#if imagen}}
+              <img class="border rounded-circle border-info-subtle img-profile" src="{{imagen}}" width="32" height="32">
+            {{else}}
+              <img class="border d-none rounded-circle border-info-subtle img-profile" src="/img/perfiles/img1.jpg" width="32" height="32">
+            {{/if}}
+            </a>
+            <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Perfil
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+                
+      {{else}}
+      <div class="container-fluid arribaAlerta " >  
+        <div class=" custom-alert alert alert-info text-center mx-auto my-2 p-1 shadow-sm rounded arribaAlerta" role="alert">
+          <div class=" text-brillo">
+              Ingresa y crea formularios estadísticos para evaluarlos y tener tus resultados de las respuestas de las personas.
+          </div>
+        </div>
+      </div>
+
+      {{/if}}
+
+
+    </nav>
+
+    <!-- Contenedor principal para el formulario -->
+    <div class="container-fluid shadow-none">
+      <!-- Contenedor del botón -->
+      <div class="theme-toggle-container">
+        <button class="btn theme-toggle-button"  type="button">
+          <i class="fas fa-adjust fs-4"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Fin del contenedor principal para el formulario -->
+
+  </div>
+
+  
+</div>
+
+
+ <script src="/assets/js/config.js"></script>
+ 

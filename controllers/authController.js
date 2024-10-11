@@ -5,115 +5,111 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer'); 
 require('dotenv').config();
 
+// Renderiza el formulario de inicio de sesión
 const loginForm = (req, res) => {
-    // res.render("login", {
-    //     mensajes: req.flash().mensajes,
-    //     csrfToken: req.csrfToken(),
-    // });
     res.render("login");
-
 }
 
+// Renderiza el formulario de registro
 const registerLoginForm = (req, res) => {
-    // res.render("register", {
-    //     mensajes: req.flash().mensajes,
-    //     csrfToken: req.csrfToken(),
-    // });
     res.render("register");
 }
 
-const registerUser = async(req, res) => {2
-    //validar los datos del formulario
-
-    const erros = validationResult(req);
-    if(!erros.isEmpty()){
-        // req.flash('mensajes',erros.array());
-        // return res.status(400).json({erros:erros.array()});
-        req.flash('mensajes',erros.array());
+// Registra un nuevo usuario
+const registerUser = async (req, res) => {
+    // Validar los datos del formulario
+    const errors = validationResult(req);
+    // Verificar si hay errores de validación
+    if (!errors.isEmpty()) {
+        // Si hay errores, enviar los mensajes de error a la vista
+        req.flash('mensajes', errors.array());
+        // Redirigir al formulario de registro
         return res.redirect('/auth/register');
     }
 
     const { userName, email, password, passwordConfirmation } = req.body;
-    try{
-        let user = await User.findOne({ email:email})
-        if(user) throw new Error('user existe');
+    try {
+        // Verificar si el usuario ya existe
+        let user = await User.findOne({userName: userName });
+        if (user) throw new Error('Usuario ya existe');
 
-        user = new User({userName,email,password,tokenConfirm:uuidv4()});
-        console.log(user);
+        // Crear un nuevo usuario
+        user = new User({ userName, password, tokenConfirm: uuidv4() });
         await user.save();
 
-        //enviar correo electronico con la confirmacion de la cuenta;
-        // Looking to send emails in production? Check out our Email API/SMTP product!
-        var transport = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
-            port: 2525,
-            auth: {
-                user: process.env.userEmail,
-                pass: process.env.passEmail
-            }
-        });
+        //Ya no usamos nodemailer
 
-        await transport.sendMail({
-            from: '"Fred Foo 👻" <foo@example.com>',
-            to: user.email,
-            subject: "verifique cuenta de correo",
-            html: `<a href="${process.env.VERCEL|| "http://localhost:3000"}auth/confirmarCuenta/${user.tokenConfirm}">verificar cuenta aquí</a>`,
-        });
-        req.flash('mensajes',[{msg:'Usuario registrado, verifica tu correo'}]);
+        //  Enviar correo electrónico de confirmación
+        // const transport = nodemailer.createTransport({
+        //     host: "sandbox.smtp.mailtrap.io",
+        //     port: 2525,
+        //     auth: {
+        //         user: process.env.userEmail,
+        //         pass: process.env.passEmail
+        //     }
+        // });
 
+        // await transport.sendMail({
+        //     from: '"Fred Foo 👻" <foo@example.com>',
+        //     to: user.email,
+        //     subject: "Verifique cuenta de correo",
+        //     html: `<a href="${process.env.VERCEL || "http://localhost:3000"}/auth/confirmarCuenta/${user.tokenConfirm}">Verificar cuenta aquí</a>`,
+        // });
+
+        // req.flash('mensajes', [{ msg: 'Usuario registrado, verifica tu correo' }]); //Sin utilidad por ahora
         return res.redirect('/auth/login');
-        // res.json(user);
-    }catch(err){
-        req.flash('mensajes',[{msg:err.message}]);
+    } catch (err) {
+        req.flash('mensajes', [{ msg: err.message }]);
         return res.redirect('/auth/register');
     }
-
 }
-const confirmarCuenta = async(req, res) => {
-    const { token } = req.params;
-    try {
-        const user = await User.findOne({tokenConfirm:token});
-        if(!user) throw new Error('Usuario no encontrado');
 
-        user.cuentaConfirmada = true;
-        user.tokenConfirm = null;
-        await user.save();
-        req.flash('mensajes',[{msg:'Cuenta verificada, puedes iniciar secion'}]);
+// // Confirma la cuenta del usuario
+// const confirmarCuenta = async (req, res) => {
+//     const { token } = req.params;
+//     try {
+//         const user = await User.findOne({ tokenConfirm: token });
+//         if (!user) throw new Error('Usuario no encontrado');
 
+//         user.cuentaConfirmada = true;
+//         user.tokenConfirm = null;
+//         await user.save();
 
-        res.redirect('/auth/login');
-    }catch(error){
-        res.json({error:error.menssaje});
+//         req.flash('mensajes', [{ msg: 'Cuenta verificada, puedes iniciar sesión' }]);
+//         res.redirect('/auth/login');
+//     } catch (error) {
+//         res.json({ error: error.message });
+//     }
+// }
+
+// Inicia sesión del usuario
+const loginUser = async (req, res) => {
+    const errors = validationResult(req); // Validar los datos del formulario
+    if (!errors.isEmpty()) { // Verificar si hay errores de validación
+        req.flash('mensajes', errors.array()); // Si hay errores, enviar los mensajes de error a la vista
+        return res.redirect('/auth/login'); // Redirigir al formulario de inicio de sesión
     }
-}
- 
-const loginUser = async(req, res) => {
-    const erros = validationResult(req);
-    if(!erros.isEmpty()){
-        req.flash('mensajes',erros.array());
-        return res.redirect('/auth/login');
-    }
-    const { email, password } = req.body;
+
+    const { userName, password } = req.body; // Extraer email y contraseña del cuerpo de la solicitud
     try {
-        const user = await User.findOne({email})
+        const user = await User.findOne({ userName }); // Buscar el usuario por usuario
+        if (!user) throw new Error('Usuario no encontrado'); // Si el usuario no es encontrado, lanzar un error
 
-        if(!user) throw new Error('Usuario no encontrado');
-        if(!user.cuentaConfirmada) throw new Error('falta confirmar cuenta');
+        // if (!user.cuentaConfirmada) throw new Error('Falta confirmar cuenta'); // Si la cuenta del usuario no está confirmada, lanzar un error (comentado por ahora)
+        
+        if (!(await user.comparePassword(password))) throw new Error('Contraseña incorrecta'); // Comparar la contraseña proporcionada con la contraseña almacenada en hash
 
-        if(!(await user.comparePassword(password)))
-            throw new Error('contraseña incorrecta');
-
-        req.login(user,function(err){
-            if(err) throw new Error('Error al iniciar sesion');
-            return res.redirect('/');
+        req.login(user, function (err) { // Iniciar sesión del usuario
+            if (err) throw new Error('Error al iniciar sesión'); // Si hay un error durante el inicio de sesión, lanzar un error
+            return res.redirect('/'); // Redirigir a la página principal después de iniciar sesión con éxito
         });
-    }
-    catch(error){
-        // res.send({error:error.menssaje});
-        req.flash('mensajes',[{msg:error.message}]);
-        return res.redirect('/auth/login');
+    } catch (error) {
+        req.flash('mensajes', [{ msg: error.message }]); // Si hay un error, enviar el mensaje de error a la vista
+        return res.redirect('/auth/login'); // Redirigir al formulario de inicio de sesión
     }
 }
+
+// Cierra la sesión del usuario
 const cerrarSesion = (req, res) => {
     req.logout((err) => {
         if (err) {
@@ -123,13 +119,11 @@ const cerrarSesion = (req, res) => {
     });
 }
 
-
-
 module.exports = {  
     loginForm,
     registerLoginForm,
     registerUser,
-    confirmarCuenta,
+    // confirmarCuenta,
     loginUser,
     cerrarSesion
 }

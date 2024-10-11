@@ -1,4 +1,5 @@
 {{#if origin }}
+
  <form action="/editar/{{id}}" method="post">
     <input type="hidden" name="_csrf" value="{{csrfToken}}" />
     <label for="origin" class="form-label">URL</label>
@@ -6,12 +7,13 @@
     <button type="submit" class="btn btn-warning w-100 mb-2">Editar URL</button>
 </form>
 
-{{else}}
-
-    <form action="/" method="post">
-        <input type="hidden" name="_csrf" value="{{csrfToken}}" />
-        <input type="text" placeholder="Ingrese URL" name="origin" class="form-control my-2">
-        <button type="submit" class="btn btn-primary w-100 mb-2">Agregar url</button>
-    </form>
-
+    {{else}}
+        <form action="/" method="post">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+            <input type="text" placeholder="Ingrese URL" name="origin" class="form-control my-2">
+            <button type="submit" class="btn btn-primary w-100 mb-2">Agregar url</button>
+        </form>
 {{/if}}
+ 
+ 
+<script src="/assets/src/formEcuesta.js" type="module"></script>

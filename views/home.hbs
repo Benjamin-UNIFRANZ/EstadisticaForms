@@ -1,7 +1,22 @@
+
+<!-- Encabezado del formulario -->
+<div class="d-sm-flex justify-content-between align-items-center mb-4">
+<h2 class="text-capitalize fs-2 fw-semibold text-info-emphasis text-opacity-75 shadow-lg mb-0 d-none d-sm-block">Crea tu formulario:</h2>
+<a class="btn btn-info btn-sm d-inline-block" role="button" href="#" style="margin-left: 18px;">
+    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="fs-4 text-dark text-bg-dark bg-dark border rounded-circle border-2 border-dark fa-sm text-white-50">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path>
+    </svg>
+    &nbsp;Crear Formulario
+</a>
+</div>
+
 <h1>Agregue su URL Brosin</h1>
 {{> Form}}
 
 {{#each url}}
     {{> Card item=this}}
+
+
 {{/each}}
 

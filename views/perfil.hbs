@@ -2,6 +2,7 @@
 <p class="text-center lead">Edita tu perfil</p>
 <div class="my-2 text-center">
     {{#if imagen}}
+        
         <img src="{{imagen}}" alt="Imagen de perfil" class="rounded-circle">
     {{else}}
         <img src="/img/perfiles/img1.jpg" alt="Imagen predeterminada" class="rounded-circle">
@@ -17,5 +18,4 @@
     <input class="form-control mb-2" type="file" id="formFile" name="myFile" />
     <button class="btn btn-dark">Cambiar imagen de perfil</button>
 </form>
-
 

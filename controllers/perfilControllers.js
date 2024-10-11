@@ -5,7 +5,12 @@ const fs = require('fs');
 const User = require('../models/User');
 const { put } = require('@vercel/blob');
 const axios = require('axios'); // Asegúrate de tener axios instalado
+const Url = require('../models/Url');
 require('dotenv').config();
+
+
+
+
 
 module.exports.formPerfil = async(req, res) => {
     try {

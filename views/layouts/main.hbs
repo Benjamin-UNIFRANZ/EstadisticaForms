@@ -1,29 +1,108 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>main</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="icon" href="/img/iconblack.ico" type="image/png">
-  </head>
-  <body>
+<!DOCTYPE html>
+<html  lang="es">
 
-      {{> Navbar}}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Estadistica Formulario</title>
+  <meta name="description" content="Estadistica">
 
-    <div class="container mt-3">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
+  <!-- Enlace a la hoja de estilo de Bootstrap local -->
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css?h=39f612d0af5b74e3058ab6d89e114e6a">
+  <!-- Enlace a FontAwesome para iconos -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+  <!-- Enlace a la hoja de estilo personalizada local -->
+  <link rel="stylesheet" href="/assets/css/styles.min.css?h=5e1f0efce23915578de71060a75f80f3">
+  <!-- Enlace a FontAwesome desde CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <!-- Enlace a la hoja de estilo de jQuery TableSorter -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+  <!-- Enlace a la hoja de estilo de jQuery UI -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/De1HtO2WZLqes5/Dkc5zBt5CMF5WeaZk5zFlhO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+
+  <link rel="icon" href="/img/iconblack.ico" type="image/png">
+
+</head>
+
+<body
+  class="text-dark-emphasis"
+  id="page-top" 
+  data-bs-target="#navbarCanvas"
+  data-bs-spy="scroll"
+  data-bs-theme="dark"
+
+>
+
+
+
+    {{!-- Incluir el componente de la barra de navegación -->
+    {{! Esta línea incluye la plantilla parcial llamada 'Navbar' en el diseño principal. 
+      El símbolo '>' se usa para referenciar parciales en Handlebars, y las dobles llaves '{{}}' 
+      se utilizan para denotar expresiones de Handlebars. }} --}}
+    {{> Navbar }}
+    {{!-- {{log user}} --}}
+  <div class="content-wrapper">
+    <!-- Contenedor principal -->
+    <div class="container-fluid shadow-none content">
+      <!-- Mostrar mensajes de alerta -->
+      {{!-- Inicia un bloque de iteración sobre la colección "mensajes" --}}
       {{#each mensajes }}
-        <div class="alert alert-dark mb-2">{{this.msg}}</div>
-
+        {{!-- Para cada elemento en "mensajes", crea un div con la clase "alert alert-dark mb-2" --}}
+        <div class="alert alert-dark mb-2">
+          {{!-- Inserta el valor de la propiedad "msg" del elemento actual --}}
+          {{this.msg}}
+        </div>
       {{/each}}
+      {{!-- Termina el bloque de iteración --}}
 
-        {{{body}}}
+
+      <!-- Contenido principal de la página -->
+            {{{body}}} <!-- Inserta el contenido de la variable `body` sin escapar el HTML -->
+
+
     </div>
 
+    <!-- Footer -->
+    <footer class="border bg-dark sticky-footer footer" >
+      <div class="container  my-auto">
+        <div class="text-center my-auto copyright">
+          <span class="text-white">Copyright © Estadistica Formulario 2024</span>
+        </div>
+      </div>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-  <script src="/js/app.js"></script>
+  </div>
+
+    <!-- Scripts de Bootstrap y Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <!-- Incluye todas las funcionalidades de Bootstrap y Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Convierte tablas HTML en tablas ordenables -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
+
+    <!-- Añade funcionalidad de filtrado a las tablas ordenables -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
+
+    <!-- Permite almacenar preferencias del usuario en el almacenamiento local -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
+
+    <!-- Proporciona interacciones, efectos y widgets adicionales para jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- Script personalizado para funcionalidades específicas del proyecto -->
+    <script src="/assets/js/script.min.js?h=15e1c98e002d7ddd781475c2f0aad9ff"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-QdJ6ngIYnbhZZgeCUoDURajd6LMQhxCvs5lslkYxDJx1VpLUy+7sTtvTFG67Km44" crossorigin="anonymous"></script>
+
+     <script src="/assets/js/config.js"></script>
+
   </body>
 </html>

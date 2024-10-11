@@ -4,20 +4,25 @@ const urlVa = require('../middlewares/urlValidar');
 const verficarUser = require('../middlewares/verificarUser');
 const csrf = require('csurf');
 const { formPerfil, editarPerfil, listarBlobs } = require('../controllers/perfilControllers'); // Importar correctamente
+const addGlobalVariables = require('../middlewares/globalVariables'); // Importar el middleware
 const csrfProtection = csrf({ cookie: true });
+
 
 const router = express.Router();
 
-router.get('/', verficarUser, leerUrls);
-router.post('/', verficarUser, csrfProtection, urlVa, agergarURL);
-router.get('/eliminar/:id', verficarUser, eliminarURL);
-router.get('/editar/:id', verficarUser, editarUrlForm);
-router.post('/editar/:id', verficarUser, csrfProtection, urlVa, editarUrl);
+
+
+router.get('/', verficarUser,addGlobalVariables, leerUrls);
+router.post('/', verficarUser, addGlobalVariables,csrfProtection, urlVa, agergarURL);
+router.get('/eliminar/:id', verficarUser,addGlobalVariables, eliminarURL);
+router.get('/editar/:id', verficarUser,addGlobalVariables, editarUrlForm);
+router.post('/editar/:id', verficarUser,addGlobalVariables, csrfProtection, urlVa, editarUrl);
 
 router.get('/perfil', verficarUser, formPerfil); // Usar el controlador correctamente
 router.post('/perfil', verficarUser, csrfProtection, editarPerfil); // Asegurar protección CSRF y verificación de usuario
 
 router.get('/listar-blobs', verficarUser, listarBlobs); // Nueva ruta para listar blobs
+
 
 router.get('/:shortURL', redireccionamiento);
 
