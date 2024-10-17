@@ -9,27 +9,27 @@ const userSchema = new Schema({
         unique: true,
         index: { unique: true } //Crea un índice único en la base de datos para el campo userName
     },
-    email: {
-        type: String,
-        lowercase: true,
-        unique: true,
-        required: false,
-        // index: { unique: true }
-    },
+    // email: {
+    //     type: String,
+    //     lowercase: true,
+    //     unique: true,
+    //     required: false,
+    //     // index: { unique: true }
+    // },
     password: {
         type: String,
         required: true
     },
-    tokenConfirm: {
-        type: String,
-        required: false,
-        default: null
-    },
-    cuentaConfirmada: {
-        type: Boolean,
-        // required: true,
-        default: false
-    },
+    // tokenConfirm: {
+    //     type: String,
+    //     required: false,
+    //     default: null
+    // },
+    // cuentaConfirmada: {
+    //     type: Boolean,
+    //     // required: true,
+    //     default: false
+    // },
     imagen: {
         type: String,
         required: false,

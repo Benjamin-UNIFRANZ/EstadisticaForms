@@ -27,14 +27,14 @@ const registerUser = async (req, res) => {
         return res.redirect('/auth/register');
     }
 
-    const { userName, email, password, passwordConfirmation } = req.body;
+    const { userName,  password, passwordConfirmation } = req.body;
     try {
         // Verificar si el usuario ya existe
         let user = await User.findOne({userName: userName });
         if (user) throw new Error('Usuario ya existe');
 
         // Crear un nuevo usuario
-        user = new User({ userName, password, tokenConfirm: uuidv4() });
+        user = new User({ userName, password }); //, tokenConfirm: uuidv4() });
         await user.save();
 
         //Ya no usamos nodemailer
@@ -56,7 +56,7 @@ const registerUser = async (req, res) => {
         //     html: `<a href="${process.env.VERCEL || "http://localhost:3000"}/auth/confirmarCuenta/${user.tokenConfirm}">Verificar cuenta aquí</a>`,
         // });
 
-        // req.flash('mensajes', [{ msg: 'Usuario registrado, verifica tu correo' }]); //Sin utilidad por ahora
+        req.flash('mensajes', [{ msg: 'Usuario registrado' }]); //Sin utilidad por ahora
         return res.redirect('/auth/login');
     } catch (err) {
         req.flash('mensajes', [{ msg: err.message }]);

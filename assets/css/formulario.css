@@ -1,0 +1,41 @@
+.custom-select {
+    width: auto;
+    padding: 0.25rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+}
+.custom-select:focus, .form-control:focus {
+    box-shadow: 0 0 5px 2px rgba(27, 195, 184, 0.7); /* Cambia el color y el tamaño de la sombra aquí */
+    border-color: rgba(0, 100, 92, 0.5); /* Cambia el color del borde aquí */
+
+}
+@media (max-width: 767.98px) {
+    #add-option-link, #add-other-link {
+        font-size: 0.7rem; /* Reduce el tamaño del texto */
+        padding: 0.5rem 0.5rem; /* Reduce el relleno del botón */
+    }
+}
+@media (max-width: 767.98px) {
+    .option-container {
+        font-size: 0.75rem; /* Reduce el tamaño de la fuente */
+        padding: 0.5rem; /* Reduce el relleno del contenedor */
+    }
+
+    .option-container input[type="text"] {
+        font-size: 0.75rem; /* Reduce el tamaño de la fuente del campo de texto */
+        padding: 0.25rem; /* Reduce el relleno del campo de texto */
+    }
+
+    .option-container input[type="radio"] {
+        transform: scale(0.75); /* Reduce el tamaño del radio button */
+    }
+}
+
+
+/* Estilo del boton de tipo de repuesta icon */
+
+.bi-list-check {
+    stroke: currentColor;
+    stroke-width: 0.7; /* Ajusta el grosor del trazo */
+    fill: none; /* Elimina el relleno para que solo se vea el trazo */
+}

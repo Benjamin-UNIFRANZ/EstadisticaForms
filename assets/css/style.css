@@ -14,7 +14,9 @@ html, body {
   background-color: #f8f9fa;
   padding: 1rem;
 }
-
+.sticky-footer {
+  margin-top: auto;
+}
 
 
 .offcanvas-width-custom {
@@ -191,3 +193,6 @@ html, body {
   background-clip: text; /* Clip de fondo estándar */
   -webkit-text-fill-color: transparent; /* Relleno de texto transparente para Webkit */
 }
+
+
+

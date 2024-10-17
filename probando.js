@@ -72,3 +72,92 @@ const respuestasIndependientes = manejarRespuestasIndependientes(respuestas);
 console.log("Códigos Abiertos:", codigosAbiertos);
 console.log("Categorías Axiales:", categoriasAxiales);
 console.log("Respuestas Independientes:", respuestasIndependientes);
+
+
+
+
+
+
+
+
+
+document.getElementById('finishFormBtn').addEventListener('click', function() {
+    const formData = new FormData(document.querySelector('form'));
+    const data = {};
+    formData.forEach((value, key) => {
+        if (!data[key]) {
+            data[key] = value;
+        } else {
+            if (!Array.isArray(data[key])) {
+                data[key] = [data[key]];
+            }
+            data[key].push(value);
+        }
+    });
+
+    // Convertir los datos a JSON
+    const jsonData = JSON.stringify(data);
+
+    // Enviar los datos al backend
+    fetch('/crearFormulario', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'CSRF-Token': document.querySelector('input[name="_csrf"]').value // Añadir el token CSRF
+        },
+        body: jsonData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        // Mostrar el formulario guardado
+        document.getElementById('savedForm').innerText = JSON.stringify(data, null, 2);
+        document.getElementById('savedFormContainer').style.display = 'block';
+        document.querySelector('form').style.display = 'none';
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+    // Estructura del almacenamiento de datos del formulario
+    const formulario = [
+        Preguntas = [
+
+        ],        
+        titulo= {
+
+        },
+        descripcion= {
+        
+        },
+    ];
+    btnfinales() {
+        const clone = templateBotonesFinales.content.cloneNode(true);
+        this.contenedorBotonesFinales.appendChild(clone);
+        return clone;
+    }
+
+
+    //Condicional para validar si se ha escrito algo en los inputs
+    this.btnfinales();
+
+
+
+
+
+
+
+
+
+

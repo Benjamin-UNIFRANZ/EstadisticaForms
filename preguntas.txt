@@ -21,3 +21,424 @@ Respuesta cerrada:
 
 
 
+
+
+para la realizacion de Dos tipos de datos: respuestas abiertas || respuestas cerradas:, ya elabore todo solametne falta programar; aqui esta mi contenido en base a lo que haremos: 
+
+
+
+
+
+<div id="contenedorForm">
+    {{> Form}}
+</div>
+    <!-- Encabezado del formulario -->
+    <div class="d-sm-flex justify-content-between align-items-center mb-4" >
+        <h2 class="text-capitalize fs-2 fw-semibold text-info-emphasis text-opacity-75 shadow-lg mb-0 d-none d-sm-block">Crea tu formulario:</h2>
+        <button id="CrearFormulario" class="btn btn-info btn-sm d-inline-block" role="button" type="submit" style="margin-left: 18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="fs-4 text-dark text-bg-dark bg-dark border rounded-circle border-2 border-dark fa-sm text-white-50">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path>
+            </svg>
+            &nbsp;Crear formulario
+        </button>
+    </div>
+
+
+    {{> Preguntas}}
+  
+
+
+  
+  
+
+<form action="/crearFormulario" method="post" class="d-none" id="finalizarFormulario">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+    <!-- Encabezado del formulario -->
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <button class="btn btn-info btn-sm d-inline-block" role="button" type="submit" style="margin-left: 18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="fs-4 text-dark text-bg-dark bg-dark border rounded-circle border-2 border-dark fa-sm text-white-50">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path>
+            </svg>
+            &nbsp;Finalizar Formulario
+        </button>
+    </div>
+</form>
+
+
+
+<template id="templatebtnTipoRespuestas">
+
+</template>
+
+
+<template id="templateOpcionMultiple">
+
+</template>
+
+
+
+<template id="templateOpcionCerrada">
+    <!-- Opciones de la pregunta -->
+    <div class="d-flex align-items-center mb-2 col-12 col-md-2 m-2 p-2 option-container" id="opcionMultiple">
+        <input type="radio" disabled class="me-2">
+        <input type="text" class="form-control" placeholder="Opción 1">                
+        {{!-- <!-- Campo de entrada para una opción de respuesta múltiple --> --}}
+    </div>
+
+    <div class="d-flex align-items-center mb-2 col-12 col-md-2 m-2 p-2 option-container" id="otro">
+        <button class="btn btn-outline-dark rounded rounded-5 mb-1 py-0 text-info fw-bold  ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle me-1" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+            </svg>
+            Otro
+        </button>
+        {{!-- <!-- Botón para agregar otra opción de respuesta --> --}}
+    </div>
+</template>
+
+
+<template id="templateOpcionAbierta">    
+    <div id="respuestaAbierta">
+        <textarea 
+            class="form-control lead fw-normal text-start fs-8 fs-md-7 fs-sm-8 mx-1" 
+            rows="3" 
+            placeholder="Respuesta abierta"
+        ></textarea>
+            {{!-- <!-- Área de texto para una respuesta abierta --> --}}
+    </div>
+</template>
+
+
+<template id="templateBotonesFinales">
+    <div class="d-flex container justify-content-start mt-3" id="botonesFinales">
+        <button class="btn btn-info btn-sm me-2 shadow-sm rounded-pill d-flex align-items-center" id="add-option-link">
+            <i class="bi bi-plus-circle me-1"></i>
+            <span class="d-md-inline">Agregar Pregunta</span>
+        </button>
+        {{!-- <!-- Botón para agregar una nueva pregunta --> --}}
+        <button class="btn btn-danger btn-sm shadow-sm rounded-pill d-flex align-items-center" id="add-other-link">
+            <i class="bi bi-x-circle me-1"></i>
+            <span class="d-md-inline">Cancelar Pregunta</span>
+        </button>
+        {{!-- <!-- Botón para cancelar la pregunta actual --> --}}
+    </div>
+</template>
+
+
+<template id="templateOtro">
+
+</template>
+
+<template id="templateTextoRptaAbierta">
+
+</template>
+
+
+<template id="templateTituloFormulario">
+
+<div class="mt-5 border border-5 rounded rounded-4 shadow " id="ContenedorTituloFormulario">
+        {{!-- <!-- Contenedor principal del formulario --> --}}
+    <div class="text-center mb-4 me-1" id="contenedorPrincipalForm">
+        <input
+            type="text"
+            class="form-control text-center display-4 fw-bolder fs-4 fs-md-2 fs-sm-3 mb-3"
+            placeholder="Aqui va el titulo del formulario"
+        >
+        {{!-- <!-- Campo de entrada para el título del formulario --> --}}
+        <hr>
+        {{!-- <!-- Área de texto para la descripción del formulario --> --}}
+        <textarea
+            class="form-control lead fw-normal text-start fs-8 fs-md-7 fs-sm-8 mx-1"
+            rows="5"
+            placeholder="Descripción del formulario"
+        >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad ut repellendus voluptates ducimus, sint aliquid, voluptatibus nobis dolore alias rem maxime. Veritatis, animi sequi! Sed tenetur debitis eos cupiditate culpa! Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maiores dolorum omnis doloremque ab asperiores beatae quidem distinctio eaque neque! Voluptates corporis repellendus atque, fuga porro culpa nemo sapiente itaque.
+        </textarea>        
+    </div>                
+</div>
+
+</template>
+
+
+
+
+
+<template id="templatePreguntasFormulario">
+<div class="mt-2 border border-5 rounded rounded-4 shadow mb-5" id="PreguntasFormulario">
+
+    {{!-- <!-- Contenedor de la pregunta --> --}}
+    <div class="mb-4 p-3 border rounded shadow-sm " id="ContenedorPregunta">
+        <div class="row g-3 align-items-center" >
+            <div class="col-12 col-md-10 mb-1 ">
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Pregunta sin título"
+                >
+                {{!-- <!-- Campo de entrada para el texto de la pregunta --> --}}
+            </div>
+
+            <div class="d-sm-flex  col-md-2 justify-content-between align-items-center p-0 m-0 option-container " id="tipoRespuesta" >
+                <button class="btn btn-dark btn-sm d-inline-block option-container text-info" role="button" type="submit" style="margin-left: 10px; margin-bottom: -14px">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-check" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                        <path d="M1.5 3.5a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13zm0 4a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13zm0 4a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13z"/>
+                        <path fill-rule="evenodd" d="M3.854 11.146a.5.5 0 0 1 0 .708l-1 1a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147.646-.647a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                    &nbsp;Tipo de Respuesta
+                </button>
+                {{!-- <!-- Botón para seleccionar el tipo de respuesta --> --}}
+            </div>
+
+            <div class="col-12 col-md-2 " id="btnTipoRespuestas">
+                <select class="form-select custom-select option-container">
+                    <option value="opcion_multiple">Opción múltiple</option>
+                    <option value="respuesta_abierta">Respuesta abierta</option>
+                </select>
+                {{!-- <!-- Menú desplegable para elegir el tipo de respuesta --> --}}
+            </div>
+        </div>
+        
+        <div id="contenedordeOpcionMultiple">
+
+        </div>
+
+
+        <div id="contenerOpcionAbierta">
+
+
+        </div>
+
+
+    </div>
+
+    <div id="contenedorBotonesFinales" class="mb-2">
+
+    </div>
+    
+</div>
+</template>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    console.log('DOM fully loaded and parsed'); // Verificar que el evento se dispare
+
+
+
+    // contenedor madre esta en home.hbs
+    const contenerdorForm = document.getElementById('contenedorForm');
+    
+    
+    //los botones mas importantes estan en form.hbs
+    const CrearFormulario = document.getElementById('CrearFormulario');
+    const finalizarFormulario = document.getElementById('finalizarFormulario');
+    
+    
+    
+    // Seleccionar todos los elementos por ID
+    const opcionMultiple = document.getElementById('opcionMultiple');
+    const otro = document.getElementById('otro');
+    const respuestaAbierta = document.getElementById('respuestaAbierta');
+    const addOptionLink = document.getElementById('add-option-link');
+    const addOtherLink = document.getElementById('add-other-link');
+    const preguntasFormulario = document.getElementById('PreguntasFormulario');
+    const contenedorPregunta = document.getElementById('ContenedorPregunta');
+    const tipoRespuesta = document.getElementById('tipoRespuesta');
+    const btnTipoRespuestas = document.getElementById('btnTipoRespuestas');
+    const contenedordeOpcionMultiple = document.getElementById('contenedordeOpcionMultiple');
+    const contenerOpcionAbierta = document.getElementById('contenerOpcionAbierta');
+    const contenedorBotonesFinales = document.getElementById('contenedorBotonesFinales');
+    
+    
+    
+    const templateOpcionCerrada = document.getElementById('templateOpcionCerrada');
+    const templateOpcionAbierta = document.getElementById('templateOpcionAbierta');
+    const templateOtro = document.getElementById('templateOtro');
+    const templateTextoRptaAbierta = document.getElementById('templateTextoRptaAbierta');
+    const templatePreguntasFormulario = document.getElementById('templatePreguntasFormulario');
+    
+    
+    
+    //Lo primero que se mostrara en contenedro madre
+    const templateTituloFormulario = document.getElementById('templateTituloFormulario');
+    const contenedorPrincipalForm = document.getElementById('contenedorPrincipalForm');
+    
+    
+    
+    
+    
+    const arrayDePreguntas = [];
+    const arrayTitleAndDescription = []
+    
+    // Crear un array para almacenar las preguntas
+    class ObjetotitleAndDescription {
+        constructor(titulo, descripcion) {
+            this.titulo = titulo;
+            this.descripcion = descripcion;
+        }
+    
+        // Crear un método para agregar preguntas
+        addQuestion(question) {
+            this.questions.push(question);
+        }
+    
+        // Crear un metodo para añadir el contenido de descripcion y titulo
+    
+        addTitleAndDescription(titulo, descripcion) {
+            const clone = templateTituloFormulario.content.cloneNode(true);
+            // Obtener los valores de los campos de entrada
+            this.titulo = clone.querySelector(' input').value;
+            this.descripcion = clone.querySelector('textarea').value;
+            // Agregar el objeto al array
+            arrayTitleAndDescription.push(this);
+        }
+        
+    }
+    
+    class guardarObjetos extends ObjetotitleAndDescription {
+        constructor(objetoDelPrincipal, arrayDePreguntas) {
+            super(objetoDelPrincipal.titulo, objetoDelPrincipal.descripcion);
+            this.questions = arrayDePreguntas;
+        }
+    
+        static btnAgregarPregunta() {
+            const templateBotonesFinales = document.getElementById('templateBotonesFinales');
+            const clone = templateBotonesFinales.content.cloneNode(true);
+    
+    
+        }
+    
+    
+    }
+    
+    CrearFormulario.addEventListener('click', e => {
+        e.preventDefault();
+        console.log('me diste click'); // Verificar que el evento se dispare
+        const clone = templateTituloFormulario.content.cloneNode(true);
+        contenerdorForm.appendChild(clone);
+        contenerdorForm.style.display = 'block';
+        
+        CrearFormulario.style.display = 'none';
+        finalizarFormulario.style.display = 'block';
+    });
+    
+    console.log(CrearFormulario);
+
+    
+    
+    
+    // <template id="templateTituloFormulario">
+    
+    // <div class="mt-5 border border-5 rounded rounded-4 shadow " id="ContenedorTituloFormulario">
+    //         {{!-- <!-- Contenedor principal del formulario --> --}}
+    //     <div class="text-center mb-4 me-1" id="contenedorPrincipalForm">
+    //         <input
+    //             type="text"
+    //             class="form-control text-center display-4 fw-bolder fs-4 fs-md-2 fs-sm-3 mb-3"
+    //             placeholder="Aqui va el titulo del formulario"
+    //         >
+    //         {{!-- <!-- Campo de entrada para el título del formulario --> --}}
+    //         <hr>
+    //         {{!-- <!-- Área de texto para la descripción del formulario --> --}}
+    //         <textarea
+    //             class="form-control lead fw-normal text-start fs-8 fs-md-7 fs-sm-8 mx-1"
+    //             rows="5"
+    //             placeholder="Descripción del formulario"
+    //         >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad ut repellendus voluptates ducimus, sint aliquid, voluptatibus nobis dolore alias rem maxime. Veritatis, animi sequi! Sed tenetur debitis eos cupiditate culpa! Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maiores dolorum omnis doloremque ab asperiores beatae quidem distinctio eaque neque! Voluptates corporis repellendus atque, fuga porro culpa nemo sapiente itaque.
+    //         </textarea>        
+    //     </div>                
+    // </div>
+    
+    // </template>
+    
+    
+    
+   
+    
+    
+});
+
+
+
+
+// document.getElementById('finishFormBtn').addEventListener('click', function() {
+    
+//     const formData = new FormData(document.querySelector('form'));
+//     const data = {};
+//     formData.forEach((value, key) => {
+//         if (!data[key]) {
+//             data[key] = value;
+//         } else {
+//             if (!Array.isArray(data[key])) {
+//                 data[key] = [data[key]];
+//             }
+//             data[key].push(value);
+//         }
+//     });
+
+//     // Convertir los datos a JSON
+//     const jsonData = JSON.stringify(data);
+
+//     // Enviar los datos al backend
+//     fetch('/crearFormulario', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'CSRF-Token': document.querySelector('input[name="_csrf"]').value // Añadir el token CSRF
+//         },
+//         body: jsonData
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log('Success:', data);
+//         // Mostrar el formulario guardado
+//         document.getElementById('savedForm').innerText = JSON.stringify(data, null, 2);
+//         document.getElementById('savedFormContainer').style.display = 'block';
+//         document.querySelector('form').style.display = 'none';
+//     })
+//     .catch((error) => {
+//         console.error('Error:', error);
+//     });
+// });
+
+(mi esquema de mongosedb en el que nos basaremos: (const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+const surveySchema = new mongoose.Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },    
+    questions: [{
+        text: {
+            type: String,
+            required: true
+        },
+        type: {
+            type: String,
+            enum: ['open', 'closed'],
+            required: true
+        }
+    }]
+});
+
+module.exports = mongoose.model('Survey', surveySchema);)); 
+
+
+; ya estuve creadno un formato de como tendria que funcionar mi codigo sin embargo, necesito ahorar tiempo y necesito que me ayudes.
+
+Lo que quiero usar ya que es lo que yo se de js es: (class, uso de template, delegacion de eventos, fragment para el reflujo,  utilizar modulos para optimizar lo necesario de todo el codigo)
+
+
+

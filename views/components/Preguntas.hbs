@@ -1,0 +1,195 @@
+
+
+<template id="templatebtnTipoRespuestas">
+
+</template>
+
+
+<template id="templateOpcionMultiple">
+
+</template>
+
+
+
+<template id="templateOpcionCerrada">
+    <!-- Opciones de la pregunta -->
+    <div class="d-flex align-items-center mb-2 col-12 col-md-2 m-2 p-2 option-container" id="opcionMultiple">
+        <input type="radio" disabled class="me-2">
+        <input id="inputCerrada" type="text" class="form-control" placeholder="Opción:" >                
+        {{!-- <!-- Campo de entrada para una opción de respuesta múltiple --> --}}
+    </div>
+
+    <div class="d-flex align-items-center mb-2 col-12 col-md-2 m-2 p-2 option-container" id="otro">
+        <button class="btn btn-outline-dark rounded rounded-5 mb-1 py-0 text-info fw-bold  ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle me-1" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+            </svg>
+            Otro
+        </button>
+        {{!-- <!-- Botón para agregar otra opción de respuesta --> --}}
+    </div>
+</template>
+
+
+
+
+
+
+
+
+<template id="templateOpcionAbierta">    
+    <div id="respuestaAbierta">
+        <textarea 
+            id="respuestaAbierta"
+            class="form-control lead fw-normal text-start fs-8 fs-md-7 fs-sm-8 mx-1" 
+            rows="3" 
+            placeholder="Parametros de la respuesta"
+            disabled
+        ></textarea>
+            {{!-- <!-- Área de texto para una respuesta abierta --> --}}
+
+        <input 
+            type="text" 
+            class="form-control mt-2" 
+            placeholder="Editar placeholder"
+            id="placeholderInput"
+        />
+        <button 
+            class="btn mt-2" 
+            id="guardarPlaceholder"
+        >
+            Guardar Parametros de la respuesta
+        </button>
+    </div>
+</template>
+
+
+<template id="templateBotonesFinales">
+    <div class="d-flex container justify-content-start mt-1" id="botonesFinales">
+        <button
+            class="btn p-1 btn-info btn-sm me-2  shadow-sm rounded-pill d-flex align-items-center"
+            type="click"
+            id="addCuestion"
+        >
+            <i class="bi bi-plus-circle me-1"></i>
+            <span class="d-md-inline">Agregar Pregunta</span>
+        </button>
+        {{!-- <!-- Botón para agregar una nueva pregunta --> --}}
+       <button
+            class="btn p-1 btn-danger btn-sm shadow-sm rounded-pill d-flex align-items-center"
+            type="click"
+            id="deleteCuestion"
+        >
+            <i class="bi bi-x-circle me-1"></i>
+            <span class="d-md-inline">Cancelar Pregunta</span>
+        </button>
+        {{!-- <!-- Botón para cancelar la pregunta actual --> --}}
+    </div>
+</template>
+
+
+<template id="templateOtro">
+
+</template>
+
+<template id="templateTextoRptaAbierta">
+
+</template>
+
+
+<template id="templateTituloFormulario">
+
+<div class="mt-5 border border-5 rounded rounded-4 shadow " id="ContenedorTituloFormulario">
+        {{!-- <!-- Contenedor principal del formulario --> --}}
+    <div class="text-center mb-4 me-1" id="contenedorPrincipalForm">
+        <input
+            type="text"
+            class="form-control text-center display-4 fw-bolder fs-4 fs-md-2 fs-sm-3 mb-3"
+            placeholder="Aqui va el titulo del formulario"
+        >
+        {{!-- <!-- Campo de entrada para el título del formulario --> --}}
+        <hr>
+        {{!-- <!-- Área de texto para la descripción del formulario --> --}}
+        <textarea
+            id="descripcionFormulario"
+            class="form-control lead fw-normal text-start fs-8 fs-md-7 fs-sm-8 mx-1"
+            rows="5"
+            placeholder="Descripción del formulario"
+        ></textarea>        
+    </div>                
+</div>
+
+</template>
+
+
+
+
+
+<template id="templatePreguntasFormulario">
+    <div>
+        <div class="mt-2 border border-5 rounded rounded-4 shadow mb-0" id="PreguntasFormulario">
+
+            {{!-- <!-- Contenedor de la pregunta --> --}}
+            <div class="mb-4 p-3 border rounded shadow-sm " id="ContenedorPregunta">
+                <div class="row g-3 align-items-center" >
+                    <div class="col-12 col-md-10 mb-1 ">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Pregunta sin título"
+                        >
+                        {{!-- <!-- Campo de entrada para el texto de la pregunta --> --}}
+                    </div>
+
+                    <div class="d-sm-flex  col-md-2 justify-content-between align-items-center p-0 m-0 option-container" id="contendorBtnTR"  >
+                        <button
+                            id="tipoRespuesta"
+                            class="btn btn-dark btn-sm d-inline-block option-container text-info"
+                            role="button"
+                            type="click"
+                            style="margin-left: 10px; margin-bottom: -14px"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-check" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                <path d="M1.5 3.5a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13zm0 4a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13zm0 4a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13z"/>
+                                <path fill-rule="evenodd" d="M3.854 11.146a.5.5 0 0 1 0 .708l-1 1a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147.646-.647a.5.5 0 0 1 .708 0z"/>
+                            </svg>
+                            &nbsp;Tipo de Respuesta
+                        </button>
+                        {{!-- <!-- Botón para seleccionar el tipo de respuesta --> --}}
+                    </div>
+
+                    <div class="col-12 col-md-2 d-none " id="btnTipoRespuestas">
+                        <select class="form-select custom-select option-container">
+                            <option value="undefained">Selecione</option>
+                            <option value="opcion_multiple">Opción múltiple</option>
+                            <option value="respuesta_abierta">Respuesta abierta</option>
+                        </select>
+                        {{!-- <!-- Menú desplegable para elegir el tipo de respuesta --> --}}
+                    </div>
+                </div>
+                
+                <div id="contenedordeOpcionMultiple">
+
+                </div>
+
+
+                <div id="contenerOpcionAbierta">
+
+
+                </div>
+
+
+            </div>
+
+            
+        </div>
+        <div id="contenedorBotonesFinales" class="mb-3 mt-0">
+
+        </div>
+
+    </div>
+</template>
+
+

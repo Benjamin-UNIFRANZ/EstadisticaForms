@@ -3,7 +3,7 @@ const Url = require('../models/Url');
 
 
 const leerUrls = async(req, res) => { 
-    console.log(req.user)
+    // console.log(req.user)
     try{
         const urls = await Url.find({user:req.user.id}).lean();
         res.render('home',{url: urls});
@@ -19,7 +19,9 @@ const leerUrls = async(req, res) => {
 
 const agergarURL = async(req, res) => {
     // console.log(req.body)
-    const { origin } = req.body;
+    // Extrae la propiedad 'origin' del objeto 'req.body' y la asigna a la constante 'origin'
+    const { origin } = req.body;   
+    
     try{
         // 3. Usar uuid para generar un identificador único
         const url = new Url({ origin:origin, shortURL: uuidv4(), user:req.user.id });
@@ -61,35 +63,43 @@ const agergarURL = async(req, res) => {
 //     }
 // }
 
+// Controlador para mostrar el formulario de edición de una URL
 const editarUrlForm = async(req, res) => {
     const { id } = req.params;
-    try{
-        const url =await Url.findById(id).lean();
+    try {
+        // Buscar la URL por su ID
+        const url = await Url.findById(id).lean();
+        // Verificar que el usuario tiene permisos para editar la URL
         if (!url.user.equals(req.user.id)) {
             throw new Error('No tienes permisos para editar esta URL');
         }
-        // console.log(url)
-        res.render('home',{origin:url.origin, id:url._id});
-    }
-    catch (error){
-        req.flash('mensajes',[{msg:error.message}]);
+        // Renderizar el formulario de edición con los datos de la URL
+        res.render('home', { origin: url.origin, id: url._id });
+    } catch (error) {
+        // Manejar errores y redirigir con un mensaje flash
+        req.flash('mensajes', [{ msg: error.message }]);
         return res.redirect('/');
     }
 }
 
+// Controlador para procesar la edición de una URL
 const editarUrl = async(req, res) => {
     const { id } = req.params;
     const { origin } = req.body;
     console.log(origin + id)
-    try{
-        await Url.findByIdAndUpdate(id,{origin:origin});
+    try {
+        // Actualizar la URL con el nuevo origen
+        await Url.findByIdAndUpdate(id, { origin: origin });
+        // Redirigir a la página principal
         res.redirect('/');
-    }
-    catch (error){
-        req.flash('mensajes',[{msg:error.message}]);
+    } catch (error) {
+        // Manejar errores y redirigir con un mensaje flash
+        req.flash('mensajes', [{ msg: error.message }]);
         return res.redirect('/');
     }
 }
+
+
 const redireccionamiento =  async (req,res)=>{
     const {shortURL} = req.params
     console.log(shortURL)
