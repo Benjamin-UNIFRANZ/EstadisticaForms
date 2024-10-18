@@ -16,7 +16,7 @@
     --bs-teal: #20c9a6;
     --bs-cyan: #36b9cc;
     --bs-black: #000;
-    --bs-white: #fff;
+    --bs-white: #fefefe; /* Blanco ligeramente menos intenso */
     --bs-gray: #858796;
     --bs-gray-dark: #5a5c69;
     --bs-gray-100: #f8f9fc;
@@ -51,7 +51,7 @@
     --bs-warning-text-emphasis: #624e19;
     --bs-danger-text-emphasis: #5c1e18;
     --bs-light-text-emphasis: #6e707e;
-    --bs-dark-text-emphasis: #6e707e;
+    --bs-dark-text-emphasis: #000; /* Texto negro absoluto */
     --bs-primary-bg-subtle: #dce3f9;
     --bs-secondary-bg-subtle: #e7e7ea;
     --bs-success-bg-subtle: #d2f4e8;
@@ -67,8 +67,8 @@
     --bs-warning-border-subtle: #fbe7b2;
     --bs-danger-border-subtle: #f5b7b1;
     --bs-light-border-subtle: #eaecf4;
-    --bs-dark-border-subtle: #b7b9cc;
-    --bs-white-rgb: 255, 255, 255;
+    --bs-dark-border-subtle: #000; /* Bordes negros absolutos */
+    --bs-white-rgb: 254, 254, 254; /* Blanco ligeramente menos intenso */
     --bs-black-rgb: 0, 0, 0;
     --bs-font-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -77,10 +77,10 @@
     --bs-body-font-size: 1rem;
     --bs-body-font-weight: 400;
     --bs-body-line-height: 1.5;
-    --bs-body-color: #858796;
-    --bs-body-color-rgb: 133, 135, 150;
-    --bs-body-bg: #fff;
-    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-body-color: #000; /* Texto negro absoluto */
+    --bs-body-color-rgb: 0, 0, 0; /* Texto negro absoluto */
+    --bs-body-bg: #fefefe; /* Blanco ligeramente menos intenso */
+    --bs-body-bg-rgb: 254, 254, 254; /* Blanco ligeramente menos intenso */
     --bs-emphasis-color: #000;
     --bs-emphasis-color-rgb: 0, 0, 0;
     --bs-secondary-color: rgba(133, 135, 150, 0.75);
@@ -102,7 +102,7 @@
     --bs-highlight-bg: #fdf3d8;
     --bs-border-width: 1px;
     --bs-border-style: solid;
-    --bs-border-color: #e3e6f0;
+    --bs-border-color: #000; /* Bordes negros absolutos */
     --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
     --bs-border-radius: 0.35rem;
     --bs-border-radius-sm: 0.25rem;
@@ -121,33 +121,33 @@
     --bs-form-valid-color: #1cc88a;
     --bs-form-valid-border-color: #1cc88a;
     --bs-form-invalid-color: #e74a3b;
-    --bs-form-invalid-border-color: #e74a3b
+    --bs-form-invalid-border-color: #e74a3b;
 }
 
 [data-bs-theme=dark] {
     color-scheme: dark;
-    --bs-body-color: #a8ff60; /* Texto en verde neón */
-    --bs-body-color-rgb: 168, 255, 96;
+    --bs-body-color: #36b9cc; /* Texto del color info */
+    --bs-body-color-rgb: 54, 185, 204; /* Texto del color info */
     --bs-body-bg: #121212; /* Fondo negro */
     --bs-body-bg-rgb: 18, 18, 18;
-    --bs-emphasis-color: #a8ff60; /* Énfasis en verde neón */
-    --bs-emphasis-color-rgb: 168, 255, 96;
-    --bs-secondary-color: rgba(168, 255, 96, 0.75); /* Texto secundario en verde neón translúcido */
-    --bs-secondary-color-rgb: 168, 255, 96;
+    --bs-emphasis-color: #36b9cc; /* Énfasis del color info */
+    --bs-emphasis-color-rgb: 54, 185, 204; /* Énfasis del color info */
+    --bs-secondary-color: rgba(54, 185, 204, 0.75); /* Texto secundario del color info translúcido */
+    --bs-secondary-color-rgb: 54, 185, 204;
     --bs-secondary-bg: #1a1a1a; /* Fondo secundario negro */
     --bs-secondary-bg-rgb: 26, 26, 26;
-    --bs-tertiary-color: rgba(168, 255, 96, 0.5); /* Texto terciario en verde neón */
-    --bs-tertiary-color-rgb: 168, 255, 96;
+    --bs-tertiary-color: rgba(54, 185, 204, 0.5); /* Texto terciario del color info */
+    --bs-tertiary-color-rgb: 54, 185, 204;
     --bs-tertiary-bg: #141414; /* Fondo terciario en negro más profundo */
     --bs-tertiary-bg-rgb: 20, 20, 20;
-    --bs-primary-text-emphasis: #a8ff60; /* Énfasis primario en verde neón */
+    --bs-primary-text-emphasis: #36b9cc; /* Énfasis primario del color info */
     --bs-secondary-text-emphasis: #8aff50; /* Énfasis secundario en verde más suave */
     --bs-success-text-emphasis: #88f9a5; /* Texto de éxito en verde */
     --bs-info-text-emphasis: #76ffeb; /* Texto informativo en verde-azul */
     --bs-warning-text-emphasis: #f9ff6e; /* Texto de advertencia en amarillo neón */
     --bs-danger-text-emphasis: #ff6767; /* Texto de peligro en rojo neón */
     --bs-light-text-emphasis: #e6e6e6; /* Texto claro en gris */
-    --bs-dark-text-emphasis: #a8ff60; /* Texto oscuro en verde neón */
+    --bs-dark-text-emphasis: #36b9cc; /* Texto oscuro del color info */
     --bs-primary-bg-subtle: #101010; /* Fondo primario sutil en negro */
     --bs-secondary-bg-subtle: #1b1b1e; /* Fondo secundario sutil en negro oscuro */
     --bs-success-bg-subtle: #0d1e16; /* Fondo de éxito en verde oscuro */
@@ -178,7 +178,7 @@
     --bs-form-valid-border-color: #21e57c;
     --bs-form-invalid-color: #ff6767; /* Texto de formulario inválido en rojo neón */
     --bs-form-invalid-border-color: #ff6767;
-  }
+}
   
 
 *,
