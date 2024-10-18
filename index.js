@@ -38,7 +38,7 @@ app.use(session({
     saveUninitialized: false, // No guardar una sesión que no ha sido inicializada
     name: 'session-user', // Nombre de la cookie de la sesión
     cookie: {
-         secure: process.env.MODO === 'production', // Habilitar solo en producción para HTTPS
+        // secure: process.env.MODO === 'production', // Habilitar solo en producción para HTTPS
         maxAge: 4 * 60 * 60 * 1000 // 4 horas en milisegundos
     },
     store: MongoStore.create({
