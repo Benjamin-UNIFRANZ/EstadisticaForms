@@ -16,7 +16,7 @@
     --bs-teal: #20c9a6;
     --bs-cyan: #36b9cc;
     --bs-black: #000;
-    --bs-white: #fff;
+    --bs-white: #f0f0f0; /* Reducir la intensidad del blanco */
     --bs-gray: #858796;
     --bs-gray-dark: #5a5c69;
     --bs-gray-100: #f8f9fc;
@@ -44,14 +44,14 @@
     --bs-danger-rgb: 231, 74, 59;
     --bs-light-rgb: 248, 249, 252;
     --bs-dark-rgb: 58, 59, 69;
-    --bs-primary-text-emphasis: #1f2e59;
-    --bs-secondary-text-emphasis: #35363c;
-    --bs-success-text-emphasis: #0b5037;
-    --bs-info-text-emphasis: #164a52;
-    --bs-warning-text-emphasis: #624e19;
-    --bs-danger-text-emphasis: #5c1e18;
-    --bs-light-text-emphasis: #6e707e;
-    --bs-dark-text-emphasis: #6e707e;
+    --bs-primary-text-emphasis: #000; /* Letras totalmente negras */
+    --bs-secondary-text-emphasis: #000; /* Letras totalmente negras */
+    --bs-success-text-emphasis: #000; /* Letras totalmente negras */
+    --bs-info-text-emphasis: #000; /* Letras totalmente negras */
+    --bs-warning-text-emphasis: #000; /* Letras totalmente negras */
+    --bs-danger-text-emphasis: #000; /* Letras totalmente negras */
+    --bs-light-text-emphasis: #000; /* Letras totalmente negras */
+    --bs-dark-text-emphasis: #000; /* Letras totalmente negras */
     --bs-primary-bg-subtle: #dce3f9;
     --bs-secondary-bg-subtle: #e7e7ea;
     --bs-success-bg-subtle: #d2f4e8;
@@ -60,15 +60,15 @@
     --bs-danger-bg-subtle: #fadbd8;
     --bs-light-bg-subtle: #fcfcfe;
     --bs-dark-bg-subtle: #d1d3e2;
-    --bs-primary-border-subtle: #b8c7f2;
-    --bs-secondary-border-subtle: #cecfd5;
-    --bs-success-border-subtle: #a4e9d0;
-    --bs-info-border-subtle: #afe3eb;
-    --bs-warning-border-subtle: #fbe7b2;
-    --bs-danger-border-subtle: #f5b7b1;
-    --bs-light-border-subtle: #eaecf4;
-    --bs-dark-border-subtle: #b7b9cc;
-    --bs-white-rgb: 255, 255, 255;
+    --bs-primary-border-subtle: #000; /* Bordes totalmente oscuros */
+    --bs-secondary-border-subtle: #000; /* Bordes totalmente oscuros */
+    --bs-success-border-subtle: #000; /* Bordes totalmente oscuros */
+    --bs-info-border-subtle: #000; /* Bordes totalmente oscuros */
+    --bs-warning-border-subtle: #000; /* Bordes totalmente oscuros */
+    --bs-danger-border-subtle: #000; /* Bordes totalmente oscuros */
+    --bs-light-border-subtle: #000; /* Bordes totalmente oscuros */
+    --bs-dark-border-subtle: #000; /* Bordes totalmente oscuros */
+    --bs-white-rgb: 240, 240, 240; /* Reducir la intensidad del blanco */
     --bs-black-rgb: 0, 0, 0;
     --bs-font-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -77,18 +77,18 @@
     --bs-body-font-size: 1rem;
     --bs-body-font-weight: 400;
     --bs-body-line-height: 1.5;
-    --bs-body-color: #858796;
-    --bs-body-color-rgb: 133, 135, 150;
-    --bs-body-bg: #fff;
-    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-body-color: #000; /* Letras totalmente negras */
+    --bs-body-color-rgb: 0, 0, 0;
+    --bs-body-bg: #f0f0f0; /* Reducir la intensidad del blanco */
+    --bs-body-bg-rgb: 240, 240, 240;
     --bs-emphasis-color: #000;
     --bs-emphasis-color-rgb: 0, 0, 0;
-    --bs-secondary-color: rgba(133, 135, 150, 0.75);
-    --bs-secondary-color-rgb: 133, 135, 150;
+    --bs-secondary-color: rgba(0, 0, 0, 0.75); /* Placeholder más oscuro */
+    --bs-secondary-color-rgb: 0, 0, 0;
     --bs-secondary-bg: #eaecf4;
     --bs-secondary-bg-rgb: 234, 236, 244;
-    --bs-tertiary-color: rgba(133, 135, 150, 0.5);
-    --bs-tertiary-color-rgb: 133, 135, 150;
+    --bs-tertiary-color: rgba(0, 0, 0, 0.5); /* Placeholder más oscuro */
+    --bs-tertiary-color-rgb: 0, 0, 0;
     --bs-tertiary-bg: #f8f9fc;
     --bs-tertiary-bg-rgb: 248, 249, 252;
     --bs-heading-color: inherit;
@@ -102,7 +102,7 @@
     --bs-highlight-bg: #fdf3d8;
     --bs-border-width: 1px;
     --bs-border-style: solid;
-    --bs-border-color: #e3e6f0;
+    --bs-border-color: #000; /* Bordes totalmente oscuros */
     --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
     --bs-border-radius: 0.35rem;
     --bs-border-radius-sm: 0.25rem;
@@ -121,33 +121,34 @@
     --bs-form-valid-color: #1cc88a;
     --bs-form-valid-border-color: #1cc88a;
     --bs-form-invalid-color: #e74a3b;
-    --bs-form-invalid-border-color: #e74a3b
+    --bs-form-invalid-border-color: #e74a3b;
 }
+
 
 [data-bs-theme=dark] {
     color-scheme: dark;
-    --bs-body-color: #a8ff60; /* Texto en verde neón */
-    --bs-body-color-rgb: 168, 255, 96;
+    --bs-body-color: #36b9cc; /* Texto en color info */
+    --bs-body-color-rgb: 54, 185, 204;
     --bs-body-bg: #121212; /* Fondo negro */
     --bs-body-bg-rgb: 18, 18, 18;
-    --bs-emphasis-color: #a8ff60; /* Énfasis en verde neón */
-    --bs-emphasis-color-rgb: 168, 255, 96;
-    --bs-secondary-color: rgba(168, 255, 96, 0.75); /* Texto secundario en verde neón translúcido */
-    --bs-secondary-color-rgb: 168, 255, 96;
+    --bs-emphasis-color: #36b9cc; /* Énfasis en color info */
+    --bs-emphasis-color-rgb: 54, 185, 204;
+    --bs-secondary-color: rgba(54, 185, 204, 0.75); /* Texto secundario en color info translúcido */
+    --bs-secondary-color-rgb: 54, 185, 204;
     --bs-secondary-bg: #1a1a1a; /* Fondo secundario negro */
     --bs-secondary-bg-rgb: 26, 26, 26;
-    --bs-tertiary-color: rgba(168, 255, 96, 0.5); /* Texto terciario en verde neón */
-    --bs-tertiary-color-rgb: 168, 255, 96;
+    --bs-tertiary-color: rgba(54, 185, 204, 0.5); /* Texto terciario en color info */
+    --bs-tertiary-color-rgb: 54, 185, 204;
     --bs-tertiary-bg: #141414; /* Fondo terciario en negro más profundo */
     --bs-tertiary-bg-rgb: 20, 20, 20;
-    --bs-primary-text-emphasis: #a8ff60; /* Énfasis primario en verde neón */
-    --bs-secondary-text-emphasis: #8aff50; /* Énfasis secundario en verde más suave */
+    --bs-primary-text-emphasis: #36b9cc; /* Énfasis primario en color info */
+    --bs-secondary-text-emphasis: #36b9cc; /* Énfasis secundario en color info */
     --bs-success-text-emphasis: #88f9a5; /* Texto de éxito en verde */
-    --bs-info-text-emphasis: #76ffeb; /* Texto informativo en verde-azul */
+    --bs-info-text-emphasis: #36b9cc; /* Texto informativo en color info */
     --bs-warning-text-emphasis: #f9ff6e; /* Texto de advertencia en amarillo neón */
     --bs-danger-text-emphasis: #ff6767; /* Texto de peligro en rojo neón */
     --bs-light-text-emphasis: #e6e6e6; /* Texto claro en gris */
-    --bs-dark-text-emphasis: #a8ff60; /* Texto oscuro en verde neón */
+    --bs-dark-text-emphasis: #36b9cc; /* Texto oscuro en color info */
     --bs-primary-bg-subtle: #101010; /* Fondo primario sutil en negro */
     --bs-secondary-bg-subtle: #1b1b1e; /* Fondo secundario sutil en negro oscuro */
     --bs-success-bg-subtle: #0d1e16; /* Fondo de éxito en verde oscuro */
@@ -156,14 +157,14 @@
     --bs-danger-bg-subtle: #2e0f0f; /* Fondo de peligro en rojo oscuro */
     --bs-light-bg-subtle: #333; /* Fondo claro en gris oscuro */
     --bs-dark-bg-subtle: #121212; /* Fondo oscuro en negro profundo */
-    --bs-primary-border-subtle: #2f824f; /* Borde en verde neón oscuro */
-    --bs-secondary-border-subtle: #505c50; /* Borde secundario en verde-gris */
-    --bs-success-border-subtle: #21b66e; /* Borde de éxito en verde */
-    --bs-info-border-subtle: #3fc9a1; /* Borde informativo en verde-azul */
-    --bs-warning-border-subtle: #d8c938; /* Borde de advertencia en amarillo neón */
-    --bs-danger-border-subtle: #ff4444; /* Borde de peligro en rojo neón */
-    --bs-light-border-subtle: #6e707e; /* Borde claro en gris */
-    --bs-dark-border-subtle: #3f3f3f; /* Borde oscuro en negro */
+    --bs-primary-border-subtle: #0a2421; /* Bordes más oscuros y de color bg-info-subtle */
+    --bs-secondary-border-subtle: #0a2421; /* Bordes más oscuros y de color bg-info-subtle */
+    --bs-success-border-subtle: #0a2421; /* Bordes más oscuros y de color bg-info-subtle */
+    --bs-info-border-subtle: #0a2421; /* Bordes más oscuros y de color bg-info-subtle */
+    --bs-warning-border-subtle: #0a2421; /* Bordes más oscuros y de color bg-info-subtle */
+    --bs-danger-border-subtle: #0a2421; /* Bordes más oscuros y de color bg-info-subtle */
+    --bs-light-border-subtle: #0a2421; /* Bordes más oscuros y de color bg-info-subtle */
+    --bs-dark-border-subtle: #0a2421; /* Bordes más oscuros y de color bg-info-subtle */
     --bs-heading-color: inherit;
     --bs-link-color: #a8ff60; /* Links en verde neón */
     --bs-link-hover-color: #8eff42; /* Links en verde neón más claro al hover */
@@ -172,14 +173,13 @@
     --bs-code-color: #ff00ff; /* Código en magenta neón */
     --bs-highlight-color: #a8ff60; /* Color de resaltado en verde neón */
     --bs-highlight-bg: #121212; /* Fondo de resaltado en negro */
-    --bs-border-color: #3f3f3f; /* Color de borde en gris oscuro */
+    --bs-border-color: #006a78; /* Bordes más oscuros y de color bg-info-subtle */
     --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
     --bs-form-valid-color: #21e57c; /* Texto de formulario válido en verde neón */
     --bs-form-valid-border-color: #21e57c;
     --bs-form-invalid-color: #ff6767; /* Texto de formulario inválido en rojo neón */
     --bs-form-invalid-border-color: #ff6767;
-  }
-  
+}
 
 *,
 *::before,
