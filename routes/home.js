@@ -16,7 +16,12 @@ const {
     editarPerfil, 
     listarBlobs 
 } = require('../controllers/perfilControllers'); // Importar correctamente
-const {createSurvey, leerSurvey }= require('../controllers/formularioController');
+const {
+    createSurvey, 
+    leerSurvey,
+    tuFormularioRoutes,
+    editarTuFormulario
+}= require('../controllers/formularioController');
 
 const csrfProtection = csrf({ cookie: true });
 const router = express.Router();
@@ -40,6 +45,11 @@ router.post('/editar/:id', verficarUser,addGlobalVariables, csrfProtection, urlV
 
 router.get('/perfil', verficarUser, formPerfil); // Usar el controlador correctamente
 router.post('/perfil', verficarUser, csrfProtection, editarPerfil); // Asegurar protección CSRF y verificación de usuario
+
+
+// Rutas para mostrar y enviar el formulario
+router.get('/tuFormulario', verficarUser, tuFormularioRoutes);
+router.get('/editarFormulario/:id', verficarUser,addGlobalVariables, editarTuFormulario);
 
 router.get('/listar-blobs', verficarUser, listarBlobs); // Nueva ruta para listar blobs
 

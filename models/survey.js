@@ -7,6 +7,10 @@ const surveySchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    imagen: {
+        type: String,
+        required: false
+    },
     title: {
         type: String,
         required: true
@@ -14,18 +18,24 @@ const surveySchema = new mongoose.Schema({
     description: {
         type: String,
         required: true
-    },    
+    },
     questions: [{
-        text: {
+        tituloPregunta: {
             type: String,
             required: true
         },
-        type: {
-            type: String,
-            enum: ['open', 'closed'],
-            required: true
+        tipoRespuesta: {
+            type: {
+                type: String,
+                enum: ['opcion_multiple', 'respuesta_abierta'],
+                required: true
+            },
+            input: {
+                opciones: [String]
+            },
+            placeholder: String
         }
     }]
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Survey', surveySchema);

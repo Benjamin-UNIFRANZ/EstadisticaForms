@@ -1,0 +1,15 @@
+<form id="finalizarFormularioUltimo">
+    <input type="input" name="title" value="Título del formulario">
+    <input type="input" name="description" value="Descripción del formulario">
+
+    <!-- Pregunta 1 -->
+    <input type="input" name="questions[0][tituloPregunta]" value="Pregunta 1">
+    <input type="input" name="questions[0][tipoRespuesta][type]" value="opcion_multiple">
+    <input type="hidden" name="questions[0][tipoRespuesta][input][opciones][0]" value="Opción 1">
+    <input type="hidden" name="questions[0][tipoRespuesta][input][opciones][1]" value="Opción 2">
+
+    <!-- Pregunta 2 -->
+    <input type="input" name="questions[1][tituloPregunta]" value="Pregunta 2">
+    <input type="input" name="questions[1][tipoRespuesta][type]" value="respuesta_abierta">
+    <input type="input" name="questions[1][tipoRespuesta][placeholder]" value="Escribe tu respuesta aquí">
+</form>
