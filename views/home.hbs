@@ -1,23 +1,18 @@
 
 
+
 <div id="contenedorForm">
     {{> Form}}
 </div>
 
 
 
-
-<script src="/assets/src/formEcuesta.js" type="module"></script>
-
-
-
-
-
-
-
-
-
-
+{{#if survey}}
+    <script src="/assets/src/editarEncuesta.js" type="module"></script>
+    {{!-- <script src="./src/editarFormulario.js" ></script> --}}
+{{else}}
+    <script src="/assets/src/formEcuesta.js" type="module"></script>
+{{/if}}
 
 
 

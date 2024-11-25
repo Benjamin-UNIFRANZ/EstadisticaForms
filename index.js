@@ -38,7 +38,7 @@ app.use(session({
     saveUninitialized: false, // No guardar una sesión que no ha sido inicializada
     name: 'session-user', // Nombre de la cookie de la sesión
     cookie: {
-        // secure: process.env.MODO === 'production', // Habilitar solo en producción para HTTPS
+        //  secure: process.env.MODO === 'production', // Habilitar solo en producción para HTTPS
         maxAge: 4 * 60 * 60 * 1000 // 4 horas en milisegundos
     },
     store: MongoStore.create({
@@ -128,6 +128,11 @@ app.get('/enviarMensajeFlash', (req, res) => {
 const hbs = create({
     extname: '.hbs', // Extensión de archivo para las plantillas de Handlebars
     partialsDir: ["views/components"], // Directorio donde se encuentran los parciales (subplantillas)
+    helpers: {
+        eq: function (a, b) {
+            return a === b;
+        }
+    }
 });
 
 app.engine('.hbs', hbs.engine); // Configura Handlebars como el motor de plantillas para archivos con extensión .hbs
@@ -143,6 +148,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Configurar la carpeta 'assets' para servir archivos estáticos
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+
 
 
 // Iniciar el servidor

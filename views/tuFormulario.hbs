@@ -1,0 +1,86 @@
+{{!-- <h1 class="text-center display-4">{{user.userName}}</h1>
+<p class="text-center lead">Edita tu perfil</p>
+<div class="my-2 text-center">
+    {{#if imagen}}
+        
+        <img src="{{imagen}}" alt="Imagen de perfil" class="rounded-circle">
+    {{else}}
+        <img src="/img/perfiles/img1.jpg" alt="Imagen predeterminada" class="rounded-circle">
+    {{/if}}
+</div>
+
+<form
+    action="/perfil?_csrf={{csrfToken}}"
+    enctype="multipart/form-data"
+    method="post"
+>
+    <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+    <input class="form-control mb-2" type="file" id="formFile" name="myFile" />
+    <button class="btn btn-dark">Cambiar imagen de perfil</button>
+</form>
+
+ --}}
+
+
+<div class="container">
+    <div class="row">
+        {{#each surveys}}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.title}}</h5>
+                        <div class="my-2 text-center">
+                            {{#if this.imagen}}
+                                
+                                <img src="{{this.imagen}}" alt="Imagen de perfil" class="rounded-circle">
+                            {{else}}
+                                <img src="/img/perfiles/img1.jpg" alt="Imagen predeterminada" class="rounded-circle">
+                            {{/if}}
+                        </div>
+                        <p class="card-text">{{this.description}}</p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{@index}}">
+                            Ver Formulario
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal{{@index}}" tabindex="-1" aria-labelledby="modalLabel{{@index}}" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel{{@index}}">{{this.title}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{this.description}}</p>
+                            <form action="/editarFormulario" method="post">
+                                {{#each this.questions}}
+                                    <div class="form-group">
+                                        <label>{{this.tituloPregunta}}</label>
+                                        {{#if (eq this.tipoRespuesta.type "opcion_multiple")}}
+                                            {{#each this.tipoRespuesta.input.opciones}}
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="question_{{@../index}}" value="{{this}}">
+                                                    <label class="form-check-label">{{this}}</label>
+                                                </div>
+                                            {{/each}}
+                                        {{else if (eq this.tipoRespuesta.type "respuesta_abierta")}}
+                                            <textarea class="form-control" name="question_{{@index}}" placeholder="{{this.tipoRespuesta.placeholder}}"></textarea>
+                                        {{/if}}
+                                    </div>
+                                {{/each}}
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <a href="/editarFormulario/{{this._id}}" class="btn btn-warning">Editar</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+
+
