@@ -18,6 +18,7 @@ const formulario = {
     questions: []
 };
 
+eventListeners();
 
 function eventListeners() {
     CrearFormulario.addEventListener('click', e => {
