@@ -745,7 +745,7 @@
  }
  
  .blockquote-footer::before {
-     content: "— "
+     content: "— "
  }
  
  .img-fluid {
@@ -15574,3 +15574,4 @@
  body.sidebar-toggled footer.sticky-footer {
      width: 100%
  }
+ Explicar

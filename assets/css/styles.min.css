@@ -1360,7 +1360,8 @@
 .btnNoBorders:active,
 .btnNoBorders:focus {
     outline: 0;
-    -moz-outline-style: none
+    outline-style: none;
+    -moz-outline-style: none;
 }
 
 .trashBtn {
@@ -1433,7 +1434,7 @@
     text-align: center !important;
     font-weight: 400 !important;
     font-size: 14px !important;
-    color: #212121v !important;
+    color: #212121 !important;
     background-image: none !important;
     background-color: transparent !important;
     -webkit-border-radius: 2px !important;
@@ -1453,7 +1454,7 @@
     -ms-user-select: none !important;
     user-select: none !important;
     -webkit-backface-visibility: hidden !important;
-    backface-visibility: hidden !important
+    backface-visibility: hidden !important;
 }
 
 .btn-accent {
@@ -1574,3 +1575,4 @@ input:focus {
     -moz-outline-style: none !important;
     box-shadow: none !important
 }
+Explicar
