@@ -5,16 +5,20 @@ const Url = require('../models/Url');
 const leerUrls = async(req, res) => { 
     // console.log(req.user)
     try{
+        // Detectar el navegador
+        const userAgent = req.headers['user-agent'];
+        let confNavegador = false;
+        if(userAgent.includes('Chrome') || userAgent.includes('Safari')){
+            confNavegador = true;
+        }
         const urls = await Url.find({user:req.user.id}).lean();
-        res.render('home',{url: urls});
+        res.render('home',{url: urls, confNavegador:confNavegador});
     }catch (error){
         // console.log(error)
         // res.send('Error')
-        req.flash('mensajes',[{msg:err.message}]);
+        req.flash('mensajes',[{msg:error.message}]);
         return res.redirect('/');
     }
-
-
 };
 
 const agergarURL = async(req, res) => {

@@ -8,33 +8,13 @@
 
 
 {{#if survey}}
-    <script>
-        (function() {
-            var userAgent = navigator.userAgent;
-            var script = document.createElement('script');
-            script.type = 'module';
-            if (userAgent.includes('Chrome') || userAgent.includes('Safari')) {
-                script.src = '/assets/src/editarEncuesta.js';
-            } else {
-                script.src = '/assets/src/alt/editarEncuestaAlt.js'; // Archivo alternativo para otros navegadores
-            }
-            document.head.appendChild(script);
-        })();
-    </script>
+    <script src="/assets/src/editarEncuesta.js"></script>
 {{else}}
-    <script>
-        (function() {
-            var userAgent = navigator.userAgent;
-            var script = document.createElement('script');
-            script.type = 'module';
-            if (userAgent.includes('Chrome') || userAgent.includes('Safari')) {
-                script.src = '/assets/src/formEcuesta.js';
-            } else {
-                script.src = '/assets/src/alt/formEncuesta.js'; // Archivo alternativo para otros navegadores
-            }
-            document.head.appendChild(script);
-        })();
-    </script>
+    {{#if confNavegador}}
+        <script src="/assets/src/formEcuesta.js" type="module"></script>
+    {{else}}
+        <script src="/assets/src/Alt/formEcuestaAlt.js" type="module"></script>
+    {{/if}}
 {{/if}}
 
 
