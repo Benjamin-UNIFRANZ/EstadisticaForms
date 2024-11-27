@@ -1572,7 +1572,7 @@ input,
 input:active,
 input:focus {
     outline: 0 !important;
+    outline-style: none !important;
     -moz-outline-style: none !important;
     box-shadow: none !important
 }
-Explicar

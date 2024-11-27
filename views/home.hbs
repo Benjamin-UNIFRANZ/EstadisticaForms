@@ -8,13 +8,34 @@
 
 
 {{#if survey}}
-    <script src="/assets/src/editarEncuesta.js" type="module"></script>
-    {{!-- <script src="./src/editarFormulario.js" ></script> --}}
+    <script>
+        (function() {
+            var userAgent = navigator.userAgent;
+            var script = document.createElement('script');
+            script.type = 'module';
+            if (userAgent.includes('Chrome') || userAgent.includes('Safari')) {
+                script.src = '/assets/src/editarEncuesta.js';
+            } else {
+                script.src = '/assets/src/alt/editarEncuestaAlt.js'; // Archivo alternativo para otros navegadores
+            }
+            document.head.appendChild(script);
+        })();
+    </script>
 {{else}}
-    <script src="/assets/src/formEcuesta.js" type="module"></script>
+    <script>
+        (function() {
+            var userAgent = navigator.userAgent;
+            var script = document.createElement('script');
+            script.type = 'module';
+            if (userAgent.includes('Chrome') || userAgent.includes('Safari')) {
+                script.src = '/assets/src/formEcuesta.js';
+            } else {
+                script.src = '/assets/src/alt/formEncuesta.js'; // Archivo alternativo para otros navegadores
+            }
+            document.head.appendChild(script);
+        })();
+    </script>
 {{/if}}
-
-
 
 
 
