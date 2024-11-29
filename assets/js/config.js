@@ -29,4 +29,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Verificar el tamaño de la pantalla al cambiar el tamaño de la ventana
     window.addEventListener('resize', checkScreenSize);
+    //comentando
 });
