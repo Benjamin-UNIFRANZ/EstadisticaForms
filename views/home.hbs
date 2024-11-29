@@ -8,12 +8,12 @@
 
 
 {{#if survey}}
-    <script src="/assets/src/editarEncuesta.js"></script>
+    <script type="module" src="/assets/src/editarEncuesta.js"></script>
 {{else}}
     {{#if confNavegador}}
-        <script src="/assets/src/formEcuesta.js" type="module"></script>
+        <script type="module" src="/assets/src/formEcuesta.js" ></script>
     {{else}}
-        <script src="/assets/src/Alt/formEcuestaAlt.js" type="module"></script>
+        <script type="module" src="/assets/src/Alt/formEcuestaAlt.js"></script>
     {{/if}}
 {{/if}}
 

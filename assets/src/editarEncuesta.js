@@ -1,5 +1,4 @@
 // editarEncuesta.js
-import{greet}from'./pro.js';
 
 // Selección de elementos del DOM
 const finalizarFormulario = document.getElementById('finalizarFormulario');
@@ -22,8 +21,6 @@ const formulario = {
     description: '',
     questions: []
 };
-
-greet();
 
 // Selecciona todos los elementos select dentro del contenedor con id 'btnTipoRespuestas'
 const selects = document.querySelectorAll('#btnTipoRespuestas select');
